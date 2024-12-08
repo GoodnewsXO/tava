@@ -12,7 +12,7 @@ class FeatureCardMobile extends StatelessWidget {
         borderRadius: BorderRadius.circular(31)
       ),
       child: Padding(
-        padding: const EdgeInsets.only(left: 14.0, right: 14, top: 28, bottom: 28),
+        padding: const EdgeInsets.only(left: 14.0, right: 14, top: 28, bottom: 34),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -21,7 +21,7 @@ class FeatureCardMobile extends StatelessWidget {
             Text(
               'Get access to Jobs',
               style: TextStyle(
-                fontSize: 14,
+                fontSize: 12,
                 fontWeight: FontWeight.w500,
                 letterSpacing: -0.66,
                 height: 1,
@@ -35,7 +35,7 @@ class FeatureCardMobile extends StatelessWidget {
                 fontSize: 11,
                 fontWeight: FontWeight.w300,
                 letterSpacing: -0.3,
-                height: 1.6,
+                height: 1,
               ),
             ),
           ],

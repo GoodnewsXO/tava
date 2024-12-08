@@ -24,14 +24,16 @@ class MobileBody extends StatelessWidget {
               padding: const EdgeInsets.only(right: 48.0),
               child: Center(
                 child: Container(
-                  decoration: BoxDecoration(color: Color(0xff042E26)),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: Color(0xff042E26)),
                   height: 57,
-                  width: 217,
+                  width: 130,
                   child: Center(
                     child: Text(
                       'Join the Waitlist',
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: 11,
                         fontWeight: FontWeight.w500,
                         letterSpacing: -0.4,
                       ),
@@ -59,7 +61,7 @@ class MobileBody extends StatelessWidget {
                       Text(
                         'Your Services, \nYour Price: Get \nEarly Access to Tava!!!',
                         style: TextStyle(
-                            fontSize: 48,
+                            fontSize: 40,
                             fontWeight: FontWeight.w500,
                             letterSpacing: -1.5,
                             height: 1,
@@ -69,7 +71,7 @@ class MobileBody extends StatelessWidget {
                         height: 18,
                       ),
                       Text(
-                        'Tava lets you set your price and choose from top-rated providers who bid to\nmeet your needs. Join the waitlist to be the first to experience flexible, \nfair service connections.',
+                        'Tava lets you set your price and choose from top-rated providers who bid to meet your needs. Join the waitlist to be the first to experience flexible, fair service connections.',
                         style: TextStyle(
                           fontSize: 11,
                           letterSpacing: -0.2,
@@ -115,7 +117,7 @@ class MobileBody extends StatelessWidget {
                       'Benefits of Joining\n Early?',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 42,
+                        fontSize: 36,
                         fontWeight: FontWeight.w500,
                         letterSpacing: -0.8,
                         color: Color(0xff053F33),
@@ -149,14 +151,14 @@ class MobileBody extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           SizedBox(
-                            height: 600,
+                            height: 500,
                             child: Padding(
                               padding: const EdgeInsets.all(19.0),
                               child: GridView.count(
                                 crossAxisCount: 2,
                                 mainAxisSpacing: 11,
                                 crossAxisSpacing: 11,
-                                childAspectRatio: 0.9,
+                                childAspectRatio: 0.64,
                                 children: [
                                   FeatureCardMobile(),
                                   FeatureCardMobile(),
@@ -200,7 +202,7 @@ class MobileBody extends StatelessWidget {
                           Text(
                             'Join the waitlist below and enjoy the early benefits!',
                             style: TextStyle(
-                                fontSize: 42,
+                                fontSize: 36,
                                 fontWeight: FontWeight.w500,
                                 letterSpacing: -0.8,
                                 height: 1,
@@ -242,12 +244,12 @@ class MobileBody extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(
                                 horizontal: 84,
-                                vertical: 34,
+                                vertical: 20,
                               ),
                               child: Text(
                                 'You are just a step away!',
                                 style: TextStyle(
-                                  fontSize: 14,
+                                  fontSize: 12,
                                   letterSpacing: -0.2,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.white,
