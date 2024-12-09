@@ -44,8 +44,8 @@ class MobileBody extends StatelessWidget {
             ),
           ],
         ),
-        body: SingleChildScrollView(
-          child: Form(
+        body: ListView(
+          children:[ Form(
             key: _formKey,
             child: Column(
               children: [
@@ -340,6 +340,7 @@ class MobileBody extends StatelessWidget {
               ],
             ),
           ),
-        ));
+          ] )//CHANGE THIS TO LISTVIEW
+      );
   }
 }
