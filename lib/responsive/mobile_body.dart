@@ -1,10 +1,42 @@
+import 'dart:math';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:tava_web/components/feature_card_mobile.dart';
+import 'package:tava_web/components/feature_card2.dart';
 import 'package:tava_web/constants/constants.dart';
 
-class MobileBody extends StatelessWidget {
+class MobileBody extends StatefulWidget {
+  @override
+  State<MobileBody> createState() => _MobileBodyState();
+}
+
+class _MobileBodyState extends State<MobileBody> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _fullNameController = TextEditingController();
+
+  final TextEditingController _emailController = TextEditingController();
+
+  final TextEditingController _jobController = TextEditingController();
+
+  @override
+  void dispose() {
+    _fullNameController.dispose();
+    _emailController.dispose();
+    _jobController.dispose();
+    super.dispose();
+  }
+
+  String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Email cannot be empty';
+    }
+    if (!value.contains('@') || !value.contains('.com')) {
+      return 'Invalid email format. Must contain @ and .com';
+    }
+    return null;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,8 +76,8 @@ class MobileBody extends StatelessWidget {
             ),
           ],
         ),
-        body: ListView(
-          children:[ Form(
+        body: ListView(children: [
+          Form(
             key: _formKey,
             child: Column(
               children: [
@@ -148,30 +180,50 @@ class MobileBody extends StatelessWidget {
                           borderRadius: BorderRadius.circular(45),
                           color: Color(0XFF042E26),
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            SizedBox(
-                              height: 500,
-                              child: Padding(
-                                padding: const EdgeInsets.all(19.0),
-                                child: GridView.count(
-                                  crossAxisCount: 2,
-                                  mainAxisSpacing: 11,
-                                  crossAxisSpacing: 11,
-                                  childAspectRatio: 0.64,
-                                  children: [
-                                    FeatureCardMobile(),
-                                    FeatureCardMobile(),
-                                    FeatureCardMobile(),
-                                    FeatureCardMobile(),
-                                  ],
-                                ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              top: 13.0, left: 13, right: 13),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              FeatureCard2(
+                                header:
+                                    'Get Exclusive Access to Amazing Services!',
+                                body:
+                                    'Be the first to experience a seamless platform tailored for your everyday needs. Unlock special perks and discounts only available to waitlist members. Stay ahead with early updates and a priority invitation when we launch. Join a community of like-minded individuals who value convenience and excellence.',
                               ),
-                            ),
-                            Image.asset('assets/images/phone 3.png')
-                          ],
+                              Container(
+                                width: double.maxFinite,
+                                height: 1,
+                                color: kSecondaryColor,
+                              ),
+                              FeatureCard2(
+                                header: 'Grow Your Business with Us!',
+                                body:
+                                    'Get early access to showcase your services to a wide audience. Enjoy priority onboarding and support as a valued provider. Unlock tools and insights to expand your reach and grow your revenue. Be part of a platform designed to connect you with customers who need your services.',
+                              ),
+                              /*SizedBox(
+                                height: 500,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(19.0),
+                                  child: GridView.count(
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 11,
+                                    crossAxisSpacing: 11,
+                                    childAspectRatio: 0.64,
+                                    children: [
+                                      FeatureCardMobile(),
+                                      FeatureCardMobile(),
+                                      FeatureCardMobile(),
+                                      FeatureCardMobile(),
+                                    ],
+                                  ),
+                                ),
+                              ),*/
+                              Image.asset('assets/images/phone 3.png')
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -197,7 +249,7 @@ class MobileBody extends StatelessWidget {
                       ),
                       SizedBox(height: 80),
                       SizedBox(
-                        height: 600,
+                        height: 680,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -211,9 +263,10 @@ class MobileBody extends StatelessWidget {
                                   color: Color(0xff053F33)),
                             ),
                             SizedBox(height: 44),
-                            Text('First Name'),
+                            Text('Full Name'),
                             SizedBox(height: 14),
                             TextFormField(
+                              controller: _fullNameController,
                               validator: (value) {
                                 if (value!.isEmpty) {
                                   return 'enter your Full Name';
@@ -231,17 +284,12 @@ class MobileBody extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            SizedBox(height: 44),
-                            Text('Last Name'),
+                            SizedBox(height: 30),
+                            Text('Email Address'),
                             SizedBox(height: 14),
                             TextFormField(
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'enter your email address';
-                                } else {
-                                  return null;
-                                }
-                              },
+                              controller: _emailController,
+                              validator: validateEmail,
                               cursorColor: kPrimaryColor,
                               decoration: InputDecoration(
                                 border: OutlineInputBorder(),
@@ -252,15 +300,55 @@ class MobileBody extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            SizedBox(height: 30),
+                            Text('Job Title'),
+                            SizedBox(height: 14),
+                            TextFormField(
+                              controller: _jobController,
+                              validator: (value) {
+                                if (value!.isEmpty) {
+                                  return 'enter your occupation Name';
+                                } else {
+                                  return null;
+                                }
+                              },
+                              cursorColor: kPrimaryColor,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(),
+                                hintText: 'eg. Plumber, Cleaner, Engineer',
+                                hintStyle: TextStyle(
+                                  color: Color(0XFFB6B6B6),
+                                  fontSize: 14,
+                                ),
+                              ),
+                            ),
                             SizedBox(
                               height: 38,
                             ),
                             GestureDetector(
-                              onTap: () {
+                              onTap: () async {
                                 if (_formKey.currentState!.validate()) {
-                                  Navigator.pushNamed(context, '/Homepage');
+                                  try {
+                                    await FirebaseFirestore.instance
+                                        .collection('waitlist')
+                                        .add({
+                                      'full_name': _fullNameController.text,
+                                      'email': _emailController.text,
+                                      'job': _jobController.text,
+                                      'timestamp': FieldValue.serverTimestamp(),
+                                    });
+                                    print("Data added successfully");
+
+                                    Navigator.pushReplacement(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => MobileBody()),
+                                    );
+                                  } catch (e) {
+                                    print("Error adding data: $e");
+                                  }
                                 } else {
-                                  print('failed');
+                                  print('Validation failed');
                                 }
                               },
                               child: Container(
@@ -340,7 +428,7 @@ class MobileBody extends StatelessWidget {
               ],
             ),
           ),
-          ] )//CHANGE THIS TO LISTVIEW
-      );
+        ]) //CHANGE THIS TO LISTVIEW
+        );
   }
 }

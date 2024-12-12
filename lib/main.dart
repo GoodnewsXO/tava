@@ -1,7 +1,19 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:tava_web/homepage.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyA3Jou39d2w99pjLPUj3zeFP1wRuwM-BLo",
+      authDomain: "tava-hq.firebaseapp.com",
+      projectId: "tava-hq",
+      storageBucket: "tava-hq.firebasestorage.app",
+      messagingSenderId: "569920516272",
+      appId: "1:569920516272:web:1a373828af04f2baf78b75",
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -20,9 +32,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: false,
       ),
       home: Homepage(),
-
       routes: {
-         '/Homepage': (context) =>Homepage(),
+        '/Homepage': (context) => Homepage(),
       },
     );
   }
