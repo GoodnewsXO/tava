@@ -342,7 +342,7 @@ class _MobileBodyState extends State<MobileBody> {
                                     Navigator.pushReplacement(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => MobileBody()),
+                                          builder: (context) => Homepage()),
                                     );
                                   } catch (e) {
                                     print("Error adding data: $e");
