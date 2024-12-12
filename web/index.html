@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js"></script>
+<script>
+  const firebaseConfig = {
+  apiKey: "AIzaSyA3Jou39d2w99pjLPUj3zeFP1wRuwM-BLo",
+  authDomain: "tava-hq.firebaseapp.com",
+  projectId: "tava-hq",
+  storageBucket: "tava-hq.firebasestorage.app",
+  messagingSenderId: "569920516272",
+  appId: "1:569920516272:web:1a373828af04f2baf78b75",
+  measurementId: "G-9767XS3WKZ"
+};
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
