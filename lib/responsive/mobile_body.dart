@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:tava_web/components/feature_card2.dart';
 import 'package:tava_web/constants/constants.dart';
+import 'package:tava_web/homepage.dart';
 
 class MobileBody extends StatefulWidget {
   @override
